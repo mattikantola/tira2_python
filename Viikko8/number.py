@@ -1,6 +1,6 @@
+from datetime import datetime
 def count(n):
 
-    choice = [0]*(n+1)
     suotuisia = [0]
 
     def subsum(ylaraja, summa):
@@ -16,9 +16,8 @@ def count(n):
                 if summa + iii > n:
                     return
                 else:
-                    choice[iii] += 1
                     subsum(iii, summa+iii)
-                    choice[iii] -= 1
+
     
     subsum(n,0)
     return suotuisia[0]
@@ -27,4 +26,7 @@ if __name__ == "__main__":
     print(count(4)) # 5
     print(count(5)) # 7
     print(count(8)) # 22
+    alku = datetime.now()
     print(count(42)) # 53174
+    loppu = datetime.now()
+    print((loppu-alku).seconds)
