@@ -17,7 +17,7 @@ def count(n):
 
             working = 0
 
-            for iii in range(1,ylaraja+1):
+            for iii in range(1,min(ylaraja+1,n-summa+1)):
 
                 candidate = tuple([iii, summa+iii])
                 if candidate not in cache:
@@ -35,4 +35,4 @@ if __name__ == "__main__":
     alku = datetime.now()
     print(count(100)) # 53174
     loppu = datetime.now()
-    print((loppu-alku).seconds, (loppu-alku).microseconds)
+    print((loppu-alku).seconds, "sekuntia,", (loppu-alku).microseconds, "mikrosekuntia") 
