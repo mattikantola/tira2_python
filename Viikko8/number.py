@@ -1,27 +1,32 @@
 from datetime import datetime
 def count(n):
 
-    suotuisia = [0]
+    cache = {}
 
     def subsum(ylaraja, summa):
 
         if summa == n or ylaraja == 1:
 
-            suotuisia[0] += 1
-            return
+            return 1
+
+        if summa > n:
+
+            return 0
 
         else:
 
-            for iii in range(1, ylaraja+1):
+            working = 0
 
-                if summa + iii > n:
-                    return
-                else:
-                    subsum(iii, summa+iii)
+            for iii in range(1,ylaraja+1):
 
-    
-    subsum(n,0)
-    return suotuisia[0]
+                candidate = tuple([iii, summa+iii])
+                if candidate not in cache:
+                    cache[candidate] = subsum(iii, summa+iii)
+                working += cache[candidate]
+  
+            return working
+
+    return subsum(n,0)
 
 if __name__ == "__main__":
     print(count(4)) # 5
