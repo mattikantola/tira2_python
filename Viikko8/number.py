@@ -5,9 +5,10 @@ def count(n):
 
     def subsum(ylaraja, summa):
 
-        if summa == n:
+        if summa == n or ylaraja == 1:
 
             suotuisia[0] += 1
+            return
 
         else:
 
@@ -27,6 +28,6 @@ if __name__ == "__main__":
     print(count(5)) # 7
     print(count(8)) # 22
     alku = datetime.now()
-    print(count(42)) # 53174
+    print(count(100)) # 53174
     loppu = datetime.now()
-    print((loppu-alku).seconds)
+    print((loppu-alku).seconds, (loppu-alku).microseconds)
