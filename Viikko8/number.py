@@ -33,6 +33,6 @@ if __name__ == "__main__":
     print(count(5)) # 7
     print(count(8)) # 22
     alku = datetime.now()
-    print(count(100)) # 53174
+    print(count(1000)) # 53174
     loppu = datetime.now()
     print((loppu-alku).seconds, "sekuntia,", (loppu-alku).microseconds, "mikrosekuntia") 
