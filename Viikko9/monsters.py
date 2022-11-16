@@ -2,32 +2,41 @@ def count(r):
 
     n = len(r)
 
-    hirviot = [[0]*(n+1) for iii in range(n+1)]
+    hirviot = [[-1]*(n) for iii in range(n)]
 
-    for iii in range(1,n):
+    def traverse(y,x,monsut=0):
 
-        for jjj in range(1,n):
 
-            if iii == 1 and jjj == 1:
+        if y > n - 1 or x > n - 1 or r[y][x] == '#':
+            return
+        
+        uudet_monsut = monsut
 
-                hirviot[iii][jjj] = 0
-                hirvioita = 0
+        if r[y][x] == '@':
+            uudet_monsut += 1
 
-            elif r[iii][jjj] == '#':
+        if hirviot[y][x] == -1:
 
-                continue
+            hirviot[y][x] = uudet_monsut
 
-            elif r[iii][jjj] == "@":
+        else:
 
-                hirvioita += 1
-                hirviot[iii][jjj] += hirvioita
+            if uudet_monsut >= hirviot[y][x]:
+
+                return
 
             else:
 
-                hirviot[iii][jjj] = min(hirviot[iii-1][jjj], hirviot[iii][jjj-1])
+                hirviot[y][x] = uudet_monsut
 
-    for rivi in hirviot:
-        print(rivi)
+        traverse(y+1, x, uudet_monsut)
+
+        traverse(y,x+1,uudet_monsut)
+
+
+    traverse(0,0)
+
+    return hirviot[-1][-1]
 
 if __name__ == "__main__":
     r = ["....@",
