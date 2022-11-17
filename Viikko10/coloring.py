@@ -15,6 +15,7 @@ class Coloring:
 
     def check(self):
 
+        self.integrity = True
         color_list = [False for iii in range(self.length)]
         visited = [False for iii in range(self.length)]
         color_list[1] = True
