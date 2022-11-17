@@ -1,38 +1,47 @@
-from collections import deque
 
 class Coloring:
 
-    class Node:
-
-        def __init__(self, color = 0): #0 is no color, 1 is the first and 2 is the second
-
-            self.color = color
-            self.visited = False
-            self.neighbors = []
-
     def __init__(self, n):
 
-        self.elements = [Coloring.Node() for node in range(0, n+1)]
+        self.length = n + 1
+        self.integrity = True
+        self.__adjacency_list = [[] for iii in range(n+1)]
 
     def add_edge(self, a, b):
 
-        self.elements[a].neighbors.append(b)
-        self.elements[b].neighbors.append(a)
+        self.__adjacency_list[a].append(b)
+        self.__adjacency_list[b].append(a)
+
 
     def check(self):
 
-        def traverse(begin): # begin variable is an integer position of the node list
+        color_list = [False for iii in range(self.length)]
+        visited = [False for iii in range(self.length)]
+        color_list[1] = True
 
-            working = deque()
-            working.append(begin)
-            self.elements[begin].visited = True
+        def traverse(node, color=True):
 
-            while len(working) > 0:
+            if not visited[node]:
+                visited[node] = True
+                color_list[node] = not color
+                for neighbor in self.__adjacency_list[node]:
+                    if color_list[node] == color_list[neighbor] and visited[neighbor]:
+                        self.integrity = False
+                    traverse(neighbor, color_list[node])
 
-                node = working.popleft()
+        for iii in range(self.length):
 
-                for neighbor in self.elements[node].neighbors:
+            if not visited[iii]:
+                traverse(iii)
 
-                    
+        return self.integrity
 
-
+if __name__ == "__main__":
+    c = Coloring(4)
+    c.add_edge(1,2)
+    c.add_edge(2,3)
+    c.add_edge(3,4)
+    c.add_edge(1,4)
+    print(c.check()) # True
+    c.add_edge(2,4)
+    print(c.check()) # False
