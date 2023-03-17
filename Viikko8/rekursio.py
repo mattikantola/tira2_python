@@ -16,4 +16,4 @@ if __name__ == "__main__":
     result = some_function(30)
     end = datetime.now()
     print(result)
-    print((end-start).seconds)
+    print((end-start).total_seconds())
