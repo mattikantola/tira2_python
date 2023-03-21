@@ -4,16 +4,31 @@ class LongPath:
         self.size = n + 1
         self.adjacency = [[] for iii in range(self.size)]
 
-
     def add_edge(self,a,b):
         
+        a, b = min(a, b), max(a, b)
         self.adjacency[a].append(b)
-        self.adjacency[b].append(a)
 
     def calculate(self):
+
+        cache = dict()
         
-        cache = {iii:0 for iii in range(self.size)}
+        def longest_path(node):
+
+            if node in cache:
+                return cache[node]
+            if len(self.adjacency[node]) == 0: #ei mitään minne mennä
+                cache[node] = 0
+                return 0
+            cache[node] = 1 + max([longest_path(neighbor) for neighbor in self.adjacency[node]])
+            return cache[node]
+
         max_path = 0
+
+        for node in range(1,self.size):
+             max_path = max(max_path, longest_path(node))
+
+        return max_path       
 
 if __name__ == "__main__":
     l = LongPath(4)
