@@ -63,7 +63,7 @@ if __name__ == "__main__":
     c = Graph()
     c.make_edges()
     start = time.time()
-    print(c.best_route(1, 1337))
+    print(c.best_route(1, 5000))
     stop = time.time()
     elapsed = stop-start
     print(elapsed, ' s')
