@@ -1,6 +1,11 @@
 from datetime import datetime
 def count(n):
 
+    ''' Dynaamisen ohjelmoinnin algoritmi, joka kertoo, kuinka monella eri tavalla voidaan luku n esittää
+        itseään pienempien kokonaislukujen summana. Laskennan välitulos määrittyy vain ja ainoastaan kahdesta
+        asiasta eli luvusta, joka on "suurin sallittu mukaan otettava" ja toisesta luvusta, joka on esitystavan
+        siihenastinen summa. Välitulokset ovat cachessa ja niitä käytetään, mikäli ne ovat olemassa. '''
+
     cache = {}
 
     def subsum(ylaraja, summa):

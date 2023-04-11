@@ -1,5 +1,9 @@
 def count(s):
 
+    '''Bittijonosta saa poistaa kaksi peräkkäistä merkkiä, jotka ovat samat. Kiinnostuneita ollaan tavoista,
+    joilla voidaan näin menetellen poistaa kaikki bitit. Laskentaa nopeutetaan katsomalla, onko poiston jälkeen saatu
+    uusi bittijono jo sellainen, josta välitulos on talletettu cache-muuttujaan.'''
+
     cache = {}
 
     def seek_and_destroy(bitstring):

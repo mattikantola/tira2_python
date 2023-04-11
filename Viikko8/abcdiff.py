@@ -1,10 +1,15 @@
 def create(n):
 
+    ''' params n: luotavien merkkijonojen pituus
+    '''
+
     result = []
     charset = "ABC"
     working = ['']*n
 
     def sequence(k):
+
+        '''params k: paikka, jossa ollaan menossa '''
 
         if k==n:
 

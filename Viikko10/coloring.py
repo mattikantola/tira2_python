@@ -1,3 +1,8 @@
+''' 
+Verkko, jota väritetään kahdella värillä niin, etteivät vierussolmut saa olla saman väriset. Verkkoon voi lisätä
+solmuja ja tarkistaa syvyyshaulla, onko väritys mahdollista toteuttaa.
+'''
+
 
 class Coloring:
 
@@ -26,7 +31,10 @@ class Coloring:
                 visited[node] = True
                 color_list[node] = not color
                 for neighbor in self.__adjacency_list[node]:
-                    if color_list[node] == color_list[neighbor] and visited[neighbor]:
+                    if color_list[node] == color_list[neighbor] and visited[neighbor]: #ollaan tilanteessa, jossa
+                                                                                        # vierussolmu on väritetty samalla värillä
+                                                                                        # kuin solmu, jota käsitellään. Tämä on merkki
+                                                                                        # värityksen epäonnistumisesta.
                         self.integrity = False
                     traverse(neighbor, color_list[node])
 

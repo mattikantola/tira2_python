@@ -1,5 +1,9 @@
 def count(r):
 
+    '''Parametrissa r on tallessa kartta, jossa @-merkki on hirviö, joita pitää keräillä mahdollisimman vähän
+    ja #-merkki on seinä, jonka kautta ei saa kulkea. Suunnistusalgoritmi on yksinkertainen, koska tehtävän mukaan
+    kulkeminen oli sallittua ainoastaan alas ja oikealle.'''
+
     n = len(r)
 
     hirviot = [[-1]*(n) for iii in range(n)]

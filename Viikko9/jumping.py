@@ -1,5 +1,9 @@
 def count(n, a, b):
 
+    ''' Tarkoitus on hyppiä n-pituista listaa a:n tai b:n verran oikealle ja palauttaa niiden hyppelyiden
+    määrä, joilla on mahdollista päästä täsmälleen listan loppuun. Välitulosten käyttö pelastaa tilanteelta, 
+    jossa samassa kohdassa on jo oltu aiemmin ja tiedetään, miten siitä päästään loppuun. '''
+
     cache = dict()
 
     def reduction(k, a, b):

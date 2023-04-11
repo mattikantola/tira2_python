@@ -1,5 +1,8 @@
 def create(s):
 
+    '''Anagrammit muodostetaan peruuttavalla haulla ja cache-hajautustaulu mahdollistaa sen, että samaa anagrammia ei muodosteta
+    kahdesti '''
+
     characters = sorted(s)
 
     result = []

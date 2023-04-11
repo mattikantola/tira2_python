@@ -1,5 +1,8 @@
 def count(numbers):
 
+    ''' Repunpakkausongelma, jossa parametrin listasta selvitetään, kuinka monta eri lukua voidaan muodostaa
+    laskemalla yhteen listassa olevia lukuja'''
+
 
     n = len(numbers)
     s = sum(numbers)
@@ -13,7 +16,9 @@ def count(numbers):
 
             if choice[jjj]:
 
-                choice[jjj+numbers[iii]] = True
+                choice[jjj+numbers[iii]] = True # koska luku jjj voidaan muodostaa, voidaan myös muodostaa luku,
+                                                # joka saadaan lisäämällä lukuun jjj se luku, jota parhaillaan
+                                                # käsitellään listassa.
 
     return len([iii for iii in choice if iii]) - 1        
 

@@ -1,5 +1,10 @@
 def check(t):
 
+    '''params t: lista, jonka osituksista ollaan kiinnostuneita
+        Tehdään alifunktiossa parts peruuttava haku listan osituksista ja jos löydetään sopiva ositus, niin
+        tavoite on saavutettu
+     '''
+
     choice = [0]*len(t)
     result = set()
 
