@@ -1,3 +1,8 @@
+'''
+Toteutus tietorakenteelle, jossa aluksi kaikki alkiot ovat omassa joukossaan ja joukkoja voi union-find-rakenteen
+avulla yhdistellä. Tarvittaessa saadaan selville myös suurimman joukon koko.
+'''
+
 class MaxSet:
     def __init__(self,n):
     

@@ -1,3 +1,6 @@
+'''Listassa saa siirtyä aina alkion osoittaman määrän indeksejä oikealle tai vasemmalle, ei koskaan listan ulkopuolelle.
+Tavoite on päästä alusta loppuun mahdollisimman pienellä kokonaismatkalla, mihin on käytetty Dijkstran algoritmia.'''
+
 from heapq import heappush, heappop
 from math import inf
 

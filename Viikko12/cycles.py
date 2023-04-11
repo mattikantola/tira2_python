@@ -1,3 +1,5 @@
+''' Käytännössä sama tehtävä kuin courseplan'''
+
 class Cycles:
     def __init__(self,n):
 

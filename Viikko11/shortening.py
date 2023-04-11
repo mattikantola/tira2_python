@@ -1,7 +1,9 @@
 from math import inf
 
 '''
-Koodi lentää kohta seinään
+Koodi lentää kohta seinään paitsi ei lennäkään, koska kyseessä oli yksinkertaisesti tilanne, jossa Bellman-Ford-algoritmi epäonnistuu.
+Tarve oli siis selvittää verkosta, voidaanko solmujen a ja b välistä etäisyyttä parantaa loputtomasti. Tämä
+vaatii kaksi asiaa eli sen, että verkossa on negatiivinen sykli ja että a:sta b:hen voidaan kulkea sen kautta. 
 '''
 
 class Shortening:
@@ -39,7 +41,10 @@ class Shortening:
 
                     distances[stop] = new
                     change = True
-                    if stop == b and iii > self.size + 1:
+                    if stop == b and iii > self.size + 1: # päätesolmu on b ja reittiä on parannettu liian monta
+                                                        # kertaa, mikä kertoo negatiivisen syklin olevan olemassa
+                                                        # ja sijoittuvan niin, että a:sta voidaan kulkea b:hen
+                                                        # sen kautta.
                         change_b = True
                     
 

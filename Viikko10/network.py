@@ -1,3 +1,9 @@
+'''
+Verkkoon voi lisätä yhteyksiä kahden solmun välille ja etsiä suorimman reitin leveyshaun avulla. Leveyshaku toimii,
+koska solmut käsitellään siinä järjestyksessä kuin ne tulevat vastaan, jolloin määränpäähän on aina päästy mahdollisimman
+lyhyttä polkua.
+'''
+
 from collections import deque
 
 class Network:

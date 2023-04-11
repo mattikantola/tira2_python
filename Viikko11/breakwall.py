@@ -1,3 +1,7 @@
+'''Labyrintti, jossa pitää edetä ruudusta A ruutuun B rikkomalla mahdollisimman vähän väliseiniä ja kulkematta ulkoseinien kautta.
+Pitää selvittää pienin määrä rikottuja seiniä ja se onnistuu käyttämällä leveyshakua siten, että suositaan lattiaruutujen
+kautta kulkemista mikäli se on mahdollista.'''
+
 from math import inf
 from collections import deque
 

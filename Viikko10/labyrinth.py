@@ -1,3 +1,5 @@
+'''Labyrintti, jossa pitää löytää lyhin tie ruudusta A ruutuun B. Käytetään leveyshakua'''
+
 from collections import deque
 
 def count(r):
@@ -25,7 +27,7 @@ def count(r):
 
                 neighbor_y, neighbor_x = neighbor
 
-                if visited[neighbor_y][neighbor_x] or r[neighbor_y][neighbor_x] == '#':
+                if visited[neighbor_y][neighbor_x] or r[neighbor_y][neighbor_x] == '#': #ruutu on käyty läpi tai se on seinä
 
                     continue
 
@@ -40,16 +42,16 @@ def count(r):
 
         for x_coord in range(1,width-1):
 
-            if r[y_coord][x_coord] == 'A':
+            if r[y_coord][x_coord] == 'A': #selvitetään alkukohta ja aloitetaan siitä
 
                 traverse(y_coord, x_coord)
             
             if r[y_coord][x_coord] == 'B':
 
-                b_y, b_x = y_coord, x_coord
+                b_y, b_x = y_coord, x_coord 
 
     if distance[b_y][b_x] > 0:
-        return distance[b_y][b_x]
+        return distance[b_y][b_x] #etäisyysmatriisin ruutua 'B' vastaava kohta
     else:
         return -1
             

@@ -1,3 +1,8 @@
+'''
+Tehtävänä on union-find -rakenteen avulla selvittää seuraava asia: jos kartalla on kaupunkeja ja ehdotuksia niitä
+yhdistäviksi teiksi ja ehdotuksilla on hinnat, niin mikä on pienin kustannus kaikkien kaupunkien yhdistämiseen?
+'''
+
 
 class NewRoads:
     
@@ -18,6 +23,11 @@ class NewRoads:
 
         arches = sorted(self.roads, key=lambda x: x[2])
         self.minimum = 0
+
+        ''' 
+        Union-find-rakenteella pidetään yllä tietoa kaupunki-tieverkon komponenttirakenteesta ja yhdistellään
+        tarvittaessa komponentteja.
+        '''
 
         def edustaja(x):
 
