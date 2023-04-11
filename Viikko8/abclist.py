@@ -1,3 +1,7 @@
+'''
+Luodaan kaikki funktion create parametrin mittaiset merkkijonot merkistöstä 'ABC'. Menetelmä on peruttava haku
+'''
+
 def create(n):
 
     charset = "ABC"

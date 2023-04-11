@@ -1,3 +1,9 @@
+'''
+Painotettuun verkkoon voi lisätä kaaria ja tarkoitus on tutkia, onko verkon kaikilla virittävillä puilla sama
+paino. Tämä tehdään union-find-rakenteella. Koska on tehotonta etsiä kaikki virittävät puut, etsitään suurin
+ja pienin, joiden painoja verrataan keskenään. Jos nämä ovat samat, ovat kaikki virittävät puut samanpainoisia.
+'''
+
 class SameWeight:
     def __init__(self,n):
         
@@ -59,7 +65,9 @@ class SameWeight:
 
         def max_length():
 
-            arches = sorted(self.edges, key=lambda x: x[2], reverse=True)
+            arches = sorted(self.edges, key=lambda x: x[2], reverse=True) #poikkeaa minimistä siten, että aloitetaan
+                                                                            #painavimmista kaarista, jolloin löydetään
+                                                                            #niin painava virittävä puu kuin mahdollista.
             maximum = 0
 
             for arch in arches:

@@ -1,3 +1,10 @@
+'''
+Muodostetaan verkko numeroista 2:stä n:ään asti ja lisätään solmut vieruslistassa vierekkäin, jos jompikumpi jakaa toisen.
+Komponentit etsitään aloittamalla uusi syvyyshaku jokaisesta solmusta, jossa ei ole aiemman syvyyshaun aikana käyty.
+Syvyyshaku käy aina koko komponentin läpi eikä mitään muuta, jolloin syvyyshakujen määrä on komponenttien määrä.
+'''
+
+
 class Components:
 
     def __init__(self, n):

@@ -21,7 +21,7 @@ def create(n):
 
                 if k > 0:
 
-                    if working[k-1] == character:
+                    if working[k-1] == character: #ei samoja merkkejä vierekkäin
 
                         continue
 
