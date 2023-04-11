@@ -1,3 +1,5 @@
+'''Tehtävänä oli Bellman-Fordin algoritmin implementointi Pythonilla'''
+
 import random
 import time
 from math import inf

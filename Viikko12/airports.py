@@ -1,3 +1,7 @@
+''' Tarkastellaan yhdensuuntaisia lentoyhteyksiä ja sitä, voidaanko joka lentokentältä lentää jollakin tapaa
+toiselle lentokentälle. Toteutus on suoraan apinoitu Floyd-Warshall-algoritmi. Vaihtoehtona olisi ollut 
+alkaa selvittää, onko koko verkko vahvasti yhtenäinen komponentti.'''
+
 class Airports:
     def __init__(self,n):
         

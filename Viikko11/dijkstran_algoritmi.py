@@ -1,3 +1,5 @@
+'''Tehtävänantona oli Dijkstran algoritmin implementointi Pythonilla ja tein työtä käskettyä.'''
+
 import random
 from heapq import heappop, heappush
 import time

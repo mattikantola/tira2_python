@@ -1,3 +1,10 @@
+''' Tässä voidaan lisätä koulutusohjelmaan kursseja ja niiden välisiä esitietovaatimuksia sekä löytää jokin tapa
+käydä kurssit läpi niin, että aina kun otetaan käsittelyyn uusi kurssi, on sen esitiedot käyty. Koska ongelma 
+palautuu suunattuun syklittömään graafiin (tai sykli tarkoittaa, että ongelma ei ratkea), voidaan käyttää 
+syvyyshakua, jota toistetaan aina, kun löydetään kurssi, jonka tila ei ole 2, joka tarkoittaa ratkennutta. Tilaa 1 käytetään
+kun solmu on otettu käsittelyyn mutta sen kaikkia naapureita ei ole vielä käyty läpi. Ykköseen törmääminen uudelleen
+karakterisoi kehäriippuvuuden. '''
+
 class CoursePlan:
     def __init__(self):
         

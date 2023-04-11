@@ -1,3 +1,6 @@
+'''Kaupunkien välille voi lisätä yhteyksiä ja tarvittaessa selvittää lyhimmät etäisyydet kaikkien kaupunkien välillä
+Floyd-Warshall-algoritmilla'''
+
 from math import inf
 
 class AllRoutes:
