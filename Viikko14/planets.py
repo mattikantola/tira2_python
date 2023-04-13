@@ -19,6 +19,12 @@ class Planets:
 
     def bfs(self, start, stop, parents):
 
+        '''
+        Polut etsitään leveyshaulla, jossa lisäksi pidetään kirjaa siitä, mikä on polun edellinen
+        solmu. Tätä tietoa käytetään hyväksi, kun muodostetaan täydennyspolkuja ja peruutetaan
+        polkua taaksepäin.
+        '''
+
         self.visited = [False for iii in range(self.size)]
         self.visited[start] = True
         storage = deque()
@@ -40,26 +46,32 @@ class Planets:
                     
                     if index == stop:
                         
-                        return True
+                        return True #kohdesolmu saavutettu, tieto siitä välitetään kutsujalle.
         
-        return False
+        return False #ei päästy kohdesolmuun
     
     def calculate(self):
 
         parents = [-1]*self.size
         max_flow = 0
-        self.backup = deepcopy(self.adjacency)
-        while self.bfs(1, self.size-1, parents):
+        self.backup = deepcopy(self.adjacency) #työverkko täydennyspolkujen muodostusta varten
+                                             
+        while self.bfs(1, self.size-1, parents):#aina kun leveyshaku löytää polun lähteen ja
+                                            #kohteen välille, voidaan algoritmia jatkaa ja
+                                            #päivittää työverkkoa.
 
             path_flow = inf
             node = self.size - 1
-            while node != 1:
+            while node != 1: 
                 parent = parents[node]
                 path_flow = min(path_flow, self.backup[parent][node])
                 node = parent
 
             node = self.size - 1
-            while node != 1:
+            while node != 1:    #peruutetaan ja vähennetään alkuperäisistä kaarista saatu minimipaino
+                                #samalla, kun käänteisiin kaariin lisätään kyseinen minimipaino.
+                                #ideana on muodostaa täydennyspolut, joita pitkin voidaan kulkea
+                                #algoritmin seuraavassa vaiheessa.
                 parent = parents[node]
                 self.backup[parent][node] -= path_flow
                 self.backup[node][parent] += path_flow
