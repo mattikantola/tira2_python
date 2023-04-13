@@ -2,7 +2,7 @@ from math import inf
 from collections import deque
 from copy import deepcopy
 
-class Download:
+class Planets:
     def __init__(self,n):
         
         self.size = n+1
@@ -10,13 +10,12 @@ class Download:
         self.visited = [False for iii in range(self.size)]
         self.backup = []
 
-    def add_link(self, a, b, x):
+    def add_teleport(self, a, b):
 
         if self.adjacency[a][b] == -1:
             self.adjacency[a][b] = 0
-        self.adjacency[a][b] += x
+        self.adjacency[a][b] += 1
         self.adjacency[b][a] = max(0, self.adjacency[b][a])
-
 
     def bfs(self, start, stop, parents):
 
@@ -45,22 +44,22 @@ class Download:
         
         return False
     
-    def calculate(self, start, stop):
+    def calculate(self):
 
         parents = [-1]*self.size
         max_flow = 0
         self.backup = deepcopy(self.adjacency)
-        while self.bfs(start, stop, parents):
+        while self.bfs(1, self.size-1, parents):
 
             path_flow = inf
-            node = stop
-            while node != start:
+            node = self.size - 1
+            while node != 1:
                 parent = parents[node]
                 path_flow = min(path_flow, self.backup[parent][node])
                 node = parent
 
-            node = stop
-            while node != start:
+            node = self.size - 1
+            while node != 1:
                 parent = parents[node]
                 self.backup[parent][node] -= path_flow
                 self.backup[node][parent] += path_flow
@@ -69,36 +68,12 @@ class Download:
             max_flow += path_flow
 
         return max_flow
-
+    
 if __name__ == "__main__":
-    d = Download(5)
-    print(d.calculate(3,4))
-    d.add_link(5,3,6)
-    print(d.calculate(5,4))
-    print(d.calculate(4,5))
-    print(d.calculate(5,1))
-    d.add_link(5,4,9)
-    d.add_link(1,2,10)
-    print(d.calculate(3,1))
-    print(d.calculate(2,4))
-    print(d.calculate(5,4))
-    d.add_link(5,2,9)
-    print(d.calculate(1,5))
-    d.add_link(3,5,2)
-    d.add_link(1,3,2)
-    d.add_link(5,4,9)
-    print(d.calculate(5,4))
-    print(d.calculate(2,3))
-    print(d.calculate(1,3))
-    print(d.calculate(3,2))
-    print(d.calculate(5,4))
-    print(d.calculate(4,5))
-    d.add_link(4,3,9)
-    print(d.calculate(4,5))
-    print(d.calculate(2,4))
-    print(d.calculate(4,5))
-    d.add_link(5,1,6)
-    d.add_link(3,5,3)
-    d.add_link(4,5,2)
-    print(d.calculate(3,4))
-    d.add_link(5,3,3)
+    p = Planets(5)
+    print(p.calculate()) # 0
+    p.add_teleport(1,2)
+    p.add_teleport(2,5)
+    print(p.calculate()) # 1
+    p.add_teleport(1,5)
+    print(p.calculate()) # 2
