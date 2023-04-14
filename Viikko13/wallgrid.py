@@ -3,8 +3,9 @@ class WallGrid:
         
         self.size = n + 1
         self.components = [[0 for iii in range(self.size)] for jjj in range(self.size)]
+        self.counter = 0
         self.floor = [[False for iii in range(self.size)] for jjj in range(self.size)]
-        self.parents = [[(yyy,xxx) for xxx in range(self.size) for yyy in range(self.size)]]
+        self.parents = [[(yyy,xxx) for xxx in range(self.size)] for yyy in range(self.size)]
 
     def remove(self,x,y):
         
@@ -18,8 +19,8 @@ class WallGrid:
         
         def merge(y1, x1, y2, x2):
 
-            y1, x1, y2, x2 = edustaja(y1, x1), edustaja(y2, x2)
-
+            y1, x1 = edustaja(y1, x1)
+            y2, x2 = edustaja(y2, x2)
             if (y1, x1) == (y2, x2):
 
                 return
@@ -29,19 +30,20 @@ class WallGrid:
                 x1, x2 = x2, x1
             self.parents[y2][x2] = self.parents[y1][x1]
             self.components[y1][x1] += self.components[y2][x2]
+            self.counter -= 1
 
-        if x in (1, self.size-2) or y in (1, self.size-2) or self.floor[y][x]:
+        if x in (-1, self.size) or y in (-1, self.size) or self.floor[y][x]:
             return
         self.floor[y][x] = True
         self.components[y][x] = 1
+        self.counter += 1
         for d_y, d_x in ((1,0), (-1,0), (0,1), (0,-1)):
-            if self.floor[y+d_y][x+d_x] and y+d_y not in (1, self.size-2) and x+d_x not in (1, self.size-2):
+            if self.floor[y+d_y][x+d_x] and y+d_y not in (-1, self.size) and x+d_x not in (-1, self.size):
                 merge(y+d_y, x+d_x, y, x)
 
     def count(self):
 
-        print("jee")
-        return self.components       
+        return self.counter 
 
 if __name__ == "__main__":
     w = WallGrid(5)
